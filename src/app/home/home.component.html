@@ -1,0 +1,64 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center"
+      ><img src="./assets/logo.jpeg.png" alt="" /> TREND</a
+    >
+    <input
+      type="text"
+      placeholder="Search by title"
+      [(ngModel)]="searchTerm"
+      (input)="filterMovies()"
+      class="form-control w-50"
+    />
+  </div>
+</nav>
+<div class="container mt-5">
+  <div class="row g-3 py-5 mt-5">
+    @for (movie of filteredMovies; track $index) {
+    <div (click)="getImageSrc(movie)" class="col-md-4 col-lg-3">
+      <div class="card h-100">
+        <img
+          [src]="basicPath + movie.poster_path"
+          class="card-img"
+          alt="{{ movie.title || movie.name }} poster"
+        />
+        <div class="card-body">
+          <p>
+            <span class="fw-bold">Title:</span> {{ movie.title || movie.name }}
+          </p>
+          <p>
+            <span class="fw-bold">Overview:</span>
+            {{ movie.overview.split(" ", 7).join(" ")
+            }}{{
+              movie.overview.split(" ", 7).length <
+              movie.overview.split(" ").length
+                ? "..."
+                : ""
+            }}
+          </p>
+          <span>
+            <span class="fw-bold">Rate:</span>
+            {{ movie.vote_average | ceil }}</span
+          >
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <div
+    #details
+    class="img-up position-relative d-none position-fixed w-100 h-100 top-0 start-0 d-flex justify-content-center align-items-center"
+  >
+    <div
+      (click)="hideCard()"
+      #hideElement
+      class="outer position-absolute top-0 end-0 m-5"
+    >
+      <div class="inner">
+        <label class="fw-bold">Back</label>
+      </div>
+    </div>
+
+    <img [src]="selectedImage" alt="port" />
+  </div>
+</div>

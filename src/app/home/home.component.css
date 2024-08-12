@@ -1,0 +1,87 @@
+.card {
+  transition: 0.5s;
+  box-shadow: 0px 0px 10px 0px black;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.1);
+  z-index: 99999;
+}
+
+nav {
+  z-index: 100000;
+  box-shadow: 0px 0px 10px 0px rgb(177, 175, 175);
+}
+nav img {
+  width: 50px;
+}
+
+.img-up {
+  z-index: 915454545454;
+  background-color: rgba(0, 102, 255, 0.267);
+}
+
+.img-up img {
+  width: 400px;
+}
+.outer {
+  position: relative;
+  margin: auto;
+  width: 70px;
+  margin-top: 200px;
+  cursor: pointer;
+}
+
+.inner {
+  width: inherit;
+  text-align: center;
+}
+
+label {
+  font-size: 0.8em;
+  line-height: 4em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: all 0.3s ease-in;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inner:before,
+.inner:after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: inherit;
+  background: #ff0707;
+  left: 0;
+  transition: all 0.3s ease-in;
+}
+
+.inner:before {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.inner:after {
+  bottom: 50%;
+  transform: rotate(-45deg);
+}
+
+.outer:hover label {
+  opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+  transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+  top: 0;
+}
+
+.outer:hover .inner:after {
+  bottom: 0;
+}
